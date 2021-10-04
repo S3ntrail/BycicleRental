@@ -48,6 +48,8 @@ namespace BakfietsenHuren
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHelmet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -63,6 +65,7 @@ namespace BakfietsenHuren
             this.ckbBycicleOne.TabIndex = 0;
             this.ckbBycicleOne.Text = "Bakfiets 1";
             this.ckbBycicleOne.UseVisualStyleBackColor = true;
+            this.ckbBycicleOne.CheckedChanged += new System.EventHandler(this.ckbBycicleOne_CheckedChanged);
             // 
             // chkBycicleTwo
             // 
@@ -92,6 +95,7 @@ namespace BakfietsenHuren
             this.numDays.Name = "numDays";
             this.numDays.Size = new System.Drawing.Size(120, 20);
             this.numDays.TabIndex = 3;
+            this.numDays.ValueChanged += new System.EventHandler(this.numDays_ValueChanged);
             // 
             // label1
             // 
@@ -184,9 +188,9 @@ namespace BakfietsenHuren
             this.lblSubtotal.AutoSize = true;
             this.lblSubtotal.Location = new System.Drawing.Point(589, 25);
             this.lblSubtotal.Name = "lblSubtotal";
-            this.lblSubtotal.Size = new System.Drawing.Size(38, 13);
+            this.lblSubtotal.Size = new System.Drawing.Size(0, 13);
             this.lblSubtotal.TabIndex = 14;
-            this.lblSubtotal.Text = "EURO";
+            this.lblSubtotal.Click += new System.EventHandler(this.lblSubtotal_Click);
             // 
             // label7
             // 
@@ -224,11 +228,31 @@ namespace BakfietsenHuren
             this.label10.TabIndex = 17;
             this.label10.Text = "Totaal";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(264, 254);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 13);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "€5 p/s";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(264, 280);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 13);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "€5 p/s";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
@@ -249,7 +273,7 @@ namespace BakfietsenHuren
             this.Controls.Add(this.chkBycicleTwo);
             this.Controls.Add(this.ckbBycicleOne);
             this.Name = "Form1";
-            this.Text = "Bycicle Rental Application";
+            this.Text = "UwU";
             ((System.ComponentModel.ISupportInitialize)(this.numDays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHelmet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -279,6 +303,8 @@ namespace BakfietsenHuren
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
 
