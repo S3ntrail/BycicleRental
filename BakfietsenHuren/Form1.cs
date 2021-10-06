@@ -13,36 +13,82 @@ namespace BakfietsenHuren
     public partial class Form1 : Form
     {
 
-        decimal price = 0;
-
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void ckbBycicleOne_CheckedChanged(object sender, EventArgs e)
-        {
-            bool checkBox1 = ckbBycicleOne.Checked;
+        // Global variable
+        decimal price, subtotal;
 
-            if(checkBox1 == true)
+        public void numDays_ValueChanged(object sender, EventArgs e)
+        {
+
+            subtotal = subtotal + 20;
+
+            RefreshLabels();
+
+        }
+
+        private void numHelmet_ValueChanged(object sender, EventArgs e)
+        {
+            subtotal = subtotal + 5;
+
+            RefreshLabels();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            subtotal = subtotal + 5;
+
+            RefreshLabels();
+        }
+
+        private void chkRainroof_CheckedChanged(object sender, EventArgs e)
+        {
+            bool rainroof = chkRainroof.Checked;
+
+            if(rainroof == true)
             {
-                decimal price =+100;
+                subtotal = subtotal + 5;
+            } else
+            {
+                subtotal = subtotal - 5;
             }
 
+            RefreshLabels();
         }
 
-        private void numDays_ValueChanged(object sender, EventArgs e)
+        private void listBycicle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int rentalDays = Convert.ToInt32(numDays.Value);
+            string selectedItem = listBycicle.SelectedItem.ToString();
 
-            int rentalPrice = rentalDays * 20;
+            switch(selectedItem)
+            {
+                case "Bakfiets 1":
+                    subtotal = subtotal + 100;
+                    break;
+                case "Bakfiets 2":
+                    subtotal = subtotal + 150;
+                    break;
+                case "Bakfiets 3":
+                    subtotal = subtotal + 250;
+                    break;
 
-            decimal price =+ rentalDays;
+            }
+
+            RefreshLabels();
+
         }
 
-        private void lblSubtotal_Click(object sender, EventArgs e)
+        // This event handler refreshes everytime its being called upon
+        private void RefreshLabels()
         {
-            lblSubtotal.Text = Convert.ToString(price);
+            lblSubtotal.Text = subtotal.ToString();
+
+            taxOutcome.Text = Convert.ToString(subtotal / 100 * 21);
+
+            totalPrice.Text = Convert.ToString(subtotal + (subtotal / 100 * 21));
         }
     }
 }

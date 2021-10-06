@@ -29,9 +29,6 @@ namespace BakfietsenHuren
         /// </summary>
         private void InitializeComponent()
         {
-            this.ckbBycicleOne = new System.Windows.Forms.CheckBox();
-            this.chkBycicleTwo = new System.Windows.Forms.CheckBox();
-            this.chkBycicleThree = new System.Windows.Forms.CheckBox();
             this.numDays = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,50 +41,17 @@ namespace BakfietsenHuren
             this.chkRainroof = new System.Windows.Forms.CheckBox();
             this.Subtotaal = new System.Windows.Forms.Label();
             this.lblSubtotal = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.taxOutcome = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.totalPrice = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.listBycicle = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.numDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHelmet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ckbBycicleOne
-            // 
-            this.ckbBycicleOne.AutoSize = true;
-            this.ckbBycicleOne.Location = new System.Drawing.Point(13, 50);
-            this.ckbBycicleOne.Margin = new System.Windows.Forms.Padding(50);
-            this.ckbBycicleOne.Name = "ckbBycicleOne";
-            this.ckbBycicleOne.Size = new System.Drawing.Size(73, 17);
-            this.ckbBycicleOne.TabIndex = 0;
-            this.ckbBycicleOne.Text = "Bakfiets 1";
-            this.ckbBycicleOne.UseVisualStyleBackColor = true;
-            this.ckbBycicleOne.CheckedChanged += new System.EventHandler(this.ckbBycicleOne_CheckedChanged);
-            // 
-            // chkBycicleTwo
-            // 
-            this.chkBycicleTwo.AutoSize = true;
-            this.chkBycicleTwo.Location = new System.Drawing.Point(13, 78);
-            this.chkBycicleTwo.Margin = new System.Windows.Forms.Padding(50);
-            this.chkBycicleTwo.Name = "chkBycicleTwo";
-            this.chkBycicleTwo.Size = new System.Drawing.Size(73, 17);
-            this.chkBycicleTwo.TabIndex = 1;
-            this.chkBycicleTwo.Text = "Bakfiets 2";
-            this.chkBycicleTwo.UseVisualStyleBackColor = true;
-            // 
-            // chkBycicleThree
-            // 
-            this.chkBycicleThree.AutoSize = true;
-            this.chkBycicleThree.Location = new System.Drawing.Point(13, 109);
-            this.chkBycicleThree.Margin = new System.Windows.Forms.Padding(50);
-            this.chkBycicleThree.Name = "chkBycicleThree";
-            this.chkBycicleThree.Size = new System.Drawing.Size(73, 17);
-            this.chkBycicleThree.TabIndex = 2;
-            this.chkBycicleThree.Text = "Bakfiets 3";
-            this.chkBycicleThree.UseVisualStyleBackColor = true;
             // 
             // numDays
             // 
@@ -121,6 +85,7 @@ namespace BakfietsenHuren
             this.numHelmet.Name = "numHelmet";
             this.numHelmet.Size = new System.Drawing.Size(120, 20);
             this.numHelmet.TabIndex = 6;
+            this.numHelmet.ValueChanged += new System.EventHandler(this.numHelmet_ValueChanged);
             // 
             // label3
             // 
@@ -155,6 +120,7 @@ namespace BakfietsenHuren
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 9;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label6
             // 
@@ -173,6 +139,7 @@ namespace BakfietsenHuren
             this.chkRainroof.Size = new System.Drawing.Size(15, 14);
             this.chkRainroof.TabIndex = 12;
             this.chkRainroof.UseVisualStyleBackColor = true;
+            this.chkRainroof.CheckedChanged += new System.EventHandler(this.chkRainroof_CheckedChanged);
             // 
             // Subtotaal
             // 
@@ -190,16 +157,15 @@ namespace BakfietsenHuren
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(0, 13);
             this.lblSubtotal.TabIndex = 14;
-            this.lblSubtotal.Click += new System.EventHandler(this.lblSubtotal_Click);
             // 
-            // label7
+            // taxOutcome
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(589, 50);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "BELASTING";
+            this.taxOutcome.AutoSize = true;
+            this.taxOutcome.Location = new System.Drawing.Point(589, 50);
+            this.taxOutcome.Name = "taxOutcome";
+            this.taxOutcome.Size = new System.Drawing.Size(67, 13);
+            this.taxOutcome.TabIndex = 16;
+            this.taxOutcome.Text = "BELASTING";
             // 
             // label8
             // 
@@ -210,14 +176,14 @@ namespace BakfietsenHuren
             this.label8.TabIndex = 15;
             this.label8.Text = "Btw 21%";
             // 
-            // label9
+            // totalPrice
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(589, 92);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(49, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "TOTAAL";
+            this.totalPrice.AutoSize = true;
+            this.totalPrice.Location = new System.Drawing.Point(589, 92);
+            this.totalPrice.Name = "totalPrice";
+            this.totalPrice.Size = new System.Drawing.Size(49, 13);
+            this.totalPrice.TabIndex = 18;
+            this.totalPrice.Text = "TOTAAL";
             // 
             // label10
             // 
@@ -246,16 +212,30 @@ namespace BakfietsenHuren
             this.label12.TabIndex = 20;
             this.label12.Text = "€5 p/s";
             // 
+            // listBycicle
+            // 
+            this.listBycicle.FormattingEnabled = true;
+            this.listBycicle.Items.AddRange(new object[] {
+            "Bakfiets 1",
+            "Bakfiets 2",
+            "Bakfiets 3"});
+            this.listBycicle.Location = new System.Drawing.Point(13, 50);
+            this.listBycicle.Name = "listBycicle";
+            this.listBycicle.Size = new System.Drawing.Size(120, 95);
+            this.listBycicle.TabIndex = 21;
+            this.listBycicle.SelectedIndexChanged += new System.EventHandler(this.listBycicle_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBycicle);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.totalPrice);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.taxOutcome);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblSubtotal);
             this.Controls.Add(this.Subtotaal);
@@ -269,9 +249,6 @@ namespace BakfietsenHuren
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numDays);
-            this.Controls.Add(this.chkBycicleThree);
-            this.Controls.Add(this.chkBycicleTwo);
-            this.Controls.Add(this.ckbBycicleOne);
             this.Name = "Form1";
             this.Text = "UwU";
             ((System.ComponentModel.ISupportInitialize)(this.numDays)).EndInit();
@@ -283,10 +260,6 @@ namespace BakfietsenHuren
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox ckbBycicleOne;
-        private System.Windows.Forms.CheckBox chkBycicleTwo;
-        private System.Windows.Forms.CheckBox chkBycicleThree;
         private System.Windows.Forms.NumericUpDown numDays;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -299,12 +272,13 @@ namespace BakfietsenHuren
         private System.Windows.Forms.CheckBox chkRainroof;
         private System.Windows.Forms.Label Subtotaal;
         private System.Windows.Forms.Label lblSubtotal;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label taxOutcome;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label totalPrice;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ListBox listBycicle;
     }
 }
 
