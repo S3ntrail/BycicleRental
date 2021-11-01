@@ -19,12 +19,22 @@ namespace BakfietsenHuren
         }
 
         // Global variable
-        decimal price, subtotal;
+        decimal subtotal;
 
-        public void numDays_ValueChanged(object sender, EventArgs e)
+        List<Tuple<int, string>> productList = new List<Tuple<int, string>>();
+
+        public void numDays_ValueChanged_1(object sender, EventArgs e)
         {
 
-            subtotal = subtotal + 20;
+            if (Convert.ToInt32(numDays.Text) < numDays.Value)
+            { /*The up arrow was pressed (Value Increased)*/
+                subtotal = subtotal + 20;
+                productList.Add(new Tuple<int, string>(Convert.ToInt32(numDays.Value), "Dagen"));
+            }
+            else
+            {/*Down Arrow Pressed (Value Decreaseed)*/
+                subtotal = subtotal - 20;
+            }
 
             RefreshLabels();
 
@@ -32,14 +42,34 @@ namespace BakfietsenHuren
 
         private void numHelmet_ValueChanged(object sender, EventArgs e)
         {
-            subtotal = subtotal + 5;
+
+            if (Convert.ToInt32(numHelmet.Text) < numHelmet.Value)
+            { /*The up arrow was pressed (Value Increased)*/
+                subtotal = subtotal + 20;
+                productList.Add(new Tuple<int, string>(1, "Helmen"));
+            }
+            else
+            {/*Down Arrow Pressed (Value Decreaseed)*/
+                subtotal = subtotal - 20;
+            }
 
             RefreshLabels();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            subtotal = subtotal + 5;
+
+            productList.Add(new Tuple<int, string>(1, "Bescherming"));
+
+            if (Convert.ToInt32(numericUpDown1.Text) < numericUpDown1.Value)
+            { /*The up arrow was pressed (Value Increased)*/
+                subtotal = subtotal + 20;
+                productList.Add(new Tuple<int, string>(1, "Helmen"));
+            }
+            else
+            {/*Down Arrow Pressed (Value Decreaseed)*/
+                subtotal = subtotal - 20;
+            }
 
             RefreshLabels();
         }
@@ -50,6 +80,7 @@ namespace BakfietsenHuren
 
             if(rainroof == true)
             {
+                productList.Add(new Tuple<int, string>(1, "Regendak"));
                 subtotal = subtotal + 5;
             } else
             {
@@ -66,12 +97,15 @@ namespace BakfietsenHuren
             switch(selectedItem)
             {
                 case "Bakfiets 1":
+                    productList.Add(new Tuple<int, string>(1, "Bakfiets 1"));
                     subtotal = subtotal + 100;
                     break;
                 case "Bakfiets 2":
+                    productList.Add(new Tuple<int, string>(1, "Bakfiets 2"));
                     subtotal = subtotal + 150;
                     break;
                 case "Bakfiets 3":
+                    productList.Add(new Tuple<int, string>(1, "Bakfiets 3"));
                     subtotal = subtotal + 250;
                     break;
 
@@ -89,6 +123,33 @@ namespace BakfietsenHuren
             taxOutcome.Text = Convert.ToString(subtotal / 100 * 21);
 
             totalPrice.Text = Convert.ToString(subtotal + (subtotal / 100 * 21));
+
+            DataGrid();
+        }
+
+        private void DataGrid()
+        {
+            // This clear works in a certain way. But not in the way i wanted :c
+            overviewPriceList.Rows.Clear();
+
+            // This foreach loop is to show all the selected items
+            foreach (var item in productList)
+            {
+                DataGridViewRow row = (DataGridViewRow)overviewPriceList.Rows[0].Clone();
+                for (int i = 0; i < overviewPriceList.RowCount - 1; i++)
+                {
+                    if (overviewPriceList.Rows[i].Cells[0].Value.ToString() == item.Item2)
+                    {
+                        row.Cells[1].Value = item.Item1;
+                    } else
+                    {
+                        row.Cells[1].Value = item.Item1;
+                        row.Cells[0].Value = item.Item2;
+                    }
+                }
+
+                overviewPriceList.Rows.Add(row);
+            }
         }
     }
 }

@@ -48,9 +48,13 @@ namespace BakfietsenHuren
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.listBycicle = new System.Windows.Forms.ListBox();
+            this.overviewPriceList = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHelmet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewPriceList)).BeginInit();
             this.SuspendLayout();
             // 
             // numDays
@@ -59,7 +63,7 @@ namespace BakfietsenHuren
             this.numDays.Name = "numDays";
             this.numDays.Size = new System.Drawing.Size(120, 20);
             this.numDays.TabIndex = 3;
-            this.numDays.ValueChanged += new System.EventHandler(this.numDays_ValueChanged);
+            this.numDays.ValueChanged += new System.EventHandler(this.numDays_ValueChanged_1);
             // 
             // label1
             // 
@@ -144,7 +148,7 @@ namespace BakfietsenHuren
             // Subtotaal
             // 
             this.Subtotaal.AutoSize = true;
-            this.Subtotaal.Location = new System.Drawing.Point(521, 25);
+            this.Subtotaal.Location = new System.Drawing.Point(629, 285);
             this.Subtotaal.Name = "Subtotaal";
             this.Subtotaal.Size = new System.Drawing.Size(52, 13);
             this.Subtotaal.TabIndex = 13;
@@ -153,24 +157,25 @@ namespace BakfietsenHuren
             // lblSubtotal
             // 
             this.lblSubtotal.AutoSize = true;
-            this.lblSubtotal.Location = new System.Drawing.Point(589, 25);
+            this.lblSubtotal.Location = new System.Drawing.Point(697, 285);
             this.lblSubtotal.Name = "lblSubtotal";
-            this.lblSubtotal.Size = new System.Drawing.Size(0, 13);
+            this.lblSubtotal.Size = new System.Drawing.Size(13, 13);
             this.lblSubtotal.TabIndex = 14;
+            this.lblSubtotal.Text = "0";
             // 
             // taxOutcome
             // 
             this.taxOutcome.AutoSize = true;
-            this.taxOutcome.Location = new System.Drawing.Point(589, 50);
+            this.taxOutcome.Location = new System.Drawing.Point(697, 310);
             this.taxOutcome.Name = "taxOutcome";
-            this.taxOutcome.Size = new System.Drawing.Size(67, 13);
+            this.taxOutcome.Size = new System.Drawing.Size(13, 13);
             this.taxOutcome.TabIndex = 16;
-            this.taxOutcome.Text = "BELASTING";
+            this.taxOutcome.Text = "0";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(521, 50);
+            this.label8.Location = new System.Drawing.Point(629, 310);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 13);
             this.label8.TabIndex = 15;
@@ -179,16 +184,16 @@ namespace BakfietsenHuren
             // totalPrice
             // 
             this.totalPrice.AutoSize = true;
-            this.totalPrice.Location = new System.Drawing.Point(589, 92);
+            this.totalPrice.Location = new System.Drawing.Point(697, 352);
             this.totalPrice.Name = "totalPrice";
-            this.totalPrice.Size = new System.Drawing.Size(49, 13);
+            this.totalPrice.Size = new System.Drawing.Size(13, 13);
             this.totalPrice.TabIndex = 18;
-            this.totalPrice.Text = "TOTAAL";
+            this.totalPrice.Text = "0";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(521, 92);
+            this.label10.Location = new System.Drawing.Point(629, 352);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 13);
             this.label10.TabIndex = 17;
@@ -225,11 +230,36 @@ namespace BakfietsenHuren
             this.listBycicle.TabIndex = 21;
             this.listBycicle.SelectedIndexChanged += new System.EventHandler(this.listBycicle_SelectedIndexChanged);
             // 
+            // overviewPriceList
+            // 
+            this.overviewPriceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.overviewPriceList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.overviewPriceList.Location = new System.Drawing.Point(468, 67);
+            this.overviewPriceList.Name = "overviewPriceList";
+            this.overviewPriceList.ReadOnly = true;
+            this.overviewPriceList.Size = new System.Drawing.Size(242, 184);
+            this.overviewPriceList.TabIndex = 23;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Product";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Aantal";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.overviewPriceList);
             this.Controls.Add(this.listBycicle);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -254,6 +284,7 @@ namespace BakfietsenHuren
             ((System.ComponentModel.ISupportInitialize)(this.numDays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHelmet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewPriceList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,6 +310,9 @@ namespace BakfietsenHuren
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ListBox listBycicle;
+        private System.Windows.Forms.DataGridView overviewPriceList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }
 
